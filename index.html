@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#20c7df">
+  <title>NEXLIX — شاهد أكثر، عِش أكثر</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{cyanx:"#20c7df",ink:"#050506"}},fontFamily:{sans:["Tahoma","Arial","sans-serif"]}}}</script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-black text-white font-sans">
+  <header class="ticker">
+    <button class="ticker-close" aria-label="إغلاق">×</button>
+    <span class="ticker-back">‹</span>
+    <div class="ticker-text">⚽ اليوم 11:00 م · إيڤرتون × كوفنتري سيتي</div>
+    <span class="ticker-ball">⚽</span>
+  </header>
+
+  <main>
+    <section class="visual-stage" aria-label="واجهة المنصة">
+      <div class="poster-wall" aria-hidden="true">
+        <div class="poster p1"><span>زمن الخوف</span></div>
+        <div class="poster p2"><span>SON OF A CRITCH</span></div>
+        <div class="poster p3"><span>THE LAST STORY</span></div>
+        <div class="poster p4"><span>MINHA MELHOR AMIGA</span></div>
+        <div class="poster p5"><span>الحصان الأسود</span></div>
+        <div class="poster p6"><span>حكاية الشام</span></div>
+        <div class="poster p7"><span>THE FAMILY</span></div>
+        <div class="poster p8"><span>ليالي المدينة</span></div>
+      </div>
+      <div class="shade"></div>
+
+      <nav class="floating-tools" aria-label="أدوات سريعة">
+        <button class="tool-btn" id="menuToggle" aria-label="القائمة"><span class="hamb">Ⅱ</span></button>
+        <button class="tool-btn" id="searchToggle" aria-label="بحث"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></svg></button>
+        <button class="tool-btn" id="themeToggle" aria-label="تبديل المظهر"><span>◔</span></button>
+      </nav>
+
+      <section class="hero-card">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 120 100" role="img" aria-label="N">
+            <path d="M12 83 32 14q3-10 13-2l39 52 7-48q2-12 13-10l9 2-14 80q-2 12-13 4L47 41l-8 45q-2 11-13 9z" fill="#ed101c"/>
+            <path d="m45 61 21 18-25 8z" fill="#fff"/>
+          </svg>
+          <div class="brand-word">NE<span>X</span>LIX</div>
+        </div>
+        <p class="tagline">WATCH MORE <b>•</b> LIVE MORE</p>
+        <p class="hero-copy">آلاف القنوات والأفلام والمسلسلات بجودة 4K على كل أجهزتك، والمباريات مباشرة.</p>
+        <div class="hero-actions">
+          <a class="subscribe" href="#categories">اشترك الآن <span>▶</span></a>
+          <a class="watch" href="#categories">مشاهدة الآن <span>▶</span></a>
+        </div>
+      </section>
+    </section>
+
+    <section class="stats" aria-label="إحصائيات المنصة">
+      <div class="stat"><strong>+13,741</strong><span class="stat-icon">▣</span></div>
+      <div class="stat"><strong>+32,827</strong><span class="stat-icon">▤</span></div>
+      <div class="stat"><strong>+15,766</strong><span class="stat-icon">▱</span></div>
+    </section>
+
+    <section class="categories" id="categories">
+      <h2><i></i>الأقسام الرئيسية</h2>
+      <div class="category-grid">
+        <a class="category" href="#matches"><span class="cat-icon">🎬</span><b>مسلسلات</b></a>
+        <a class="category" href="#movies"><span class="cat-icon">🎞️</span><b>أفلام</b></a>
+        <a class="category" href="#tv"><span class="cat-icon">📺</span><b>تلفزيون</b></a>
+        <a class="category" href="#matches"><span class="cat-icon">⚽</span><b>مباريات</b></a>
+      </div>
+    </section>
+
+    <section class="content-section" id="movies">
+      <div class="section-heading"><h2>الأكثر مشاهدة</h2><a href="#categories">عرض الكل ←</a></div>
+      <div class="media-row">
+        <article class="media-card"><div class="cover cover-a">THE<br>STORY</div><b>حكايات من الماضي</b></article>
+        <article class="media-card"><div class="cover cover-b">DARK<br>NIGHT</div><b>الليلة الأخيرة</b></article>
+        <article class="media-card"><div class="cover cover-c">FAMILY</div><b>العائلة</b></article>
+        <article class="media-card"><div class="cover cover-d">ACTION</div><b>مهمة مستحيلة</b></article>
+      </div>
+    </section>
+  </main>
+
+  <div class="search-panel" id="searchPanel" aria-hidden="true">
+    <button class="search-close" id="searchClose">×</button>
+    <form class="search-form" hx-get="search-results.html" hx-target="#searchResult" hx-swap="innerHTML">
+      <input name="q" type="search" placeholder="ابحث عن فيلم أو مسلسل..." aria-label="بحث">
+      <button type="submit">بحث</button>
+    </form>
+    <div id="searchResult" class="search-result">اكتب اسم العمل الذي تبحث عنه.</div>
+  </div>
+  <div class="menu-panel" id="menuPanel">
+    <a href="#categories">الأقسام الرئيسية</a><a href="#movies">الأكثر مشاهدة</a><a href="#matches">المباريات</a>
+  </div>
+  <footer>© 2026 NEXLIX — جميع الحقوق محفوظة</footer>
+  <script src="app.js"></script>
+</body>
+</html>
